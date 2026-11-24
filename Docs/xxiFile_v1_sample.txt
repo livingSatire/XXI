@@ -9,6 +9,9 @@
 check_depends() {
     check_command_exist make
     check_command_exist gcc
+    check_command_exist wget
+    check_command_exist tar
+    check_command_exist nonexistent # Here is an error for testing
 }
 
 fetch_code() {
