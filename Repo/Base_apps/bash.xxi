@@ -1,0 +1,27 @@
+#!/bin/sh
+
+. ./../../lib/common_func.sh
+. ./../../lib/root_func.sh
+
+# bash xxiFile
+# xxiFile v1
+
+check_depends() {
+    check_command_exist make
+    check_command_exist gcc
+    check_command_exist nonexistent
+}
+
+fetch_code() {
+    mkdir -p /xxi/build/bash || fail "Failed to make build dir"
+    cd /xxi/build/bash || fail "Failed to go to build dir when fetching code"
+    wget https://ftp.gnu.org/gnu/bash/bash-5.3.tar.gz || fail "Failed to download code"
+    tar xpvf bash-5.3.tar.gz || fail "Failed to extract code"
+}
+
+build() {
+    cd /xxi/build/bash/bash-5.3 || fail "Failed to go to build dir when building package"
+    ./configure --prefix=/usr --without-bash-malloc --docdir=/usr/share/doc/bash || fail "Failed to configure package" 
+    make || fail "Failed to make package"
+    make DESTDIR=/ install || fail "Failed to install package"
+}
