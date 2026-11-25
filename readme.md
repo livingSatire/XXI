@@ -1,5 +1,7 @@
 # XXI: System Toolkit by livingSatire
 
+### NOTE: XXI is NOT ready for use. It is not even pre-alpha.
+
 ## About
 XXI is a system toolkit for maintaining a Linux system. It is not a distro, but a small collection of tools for maintaining your own system.
 
